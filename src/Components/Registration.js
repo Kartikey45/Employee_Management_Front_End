@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React from 'react';
 import axios from 'axios';
+import './Style.css';
 
-
-class Registration extends Component {
-    constructor() {
-        super();
+class AddEmployee extends React.Component {
+    constructor(props) {
+        super(props)
         this.state = {
             UserId: 0,
             FirstName: '',
@@ -12,54 +12,37 @@ class Registration extends Component {
             Gender: '',
             Email: '',
             Address: '',
-            Designation: '',
-            Salary: 0.0,
+            Designation: '', 
+            Salary: 0.00,
             MobileNumber: '',
             Password: ''
         }
     }
-
-
-    handleChange = event => {
-        this.setState({
-            [event.target.name]: event.target.value
+    AddEmployeeData = () => {
+        axios.post('https://localhost:44375/api/user/register', {
+            UserId: this.state.UserId, FirstName: this.state.FirstName,
+            LastName: this.state.LastName, Gender: this.state.Gender,
+            Email: this.state.Email, Address: this.state.Address,
+            Designation: this.state.Designation, Salary: this.state.Salary,
+            MobileNumber: this.state.MobileNumber, Password: this.state.Password
         })
-    }
-
-    handleSubmit = event => {
-        event.preventDefault();
-        console.log(this.state, " thi is state ");
-
-        let user = {
-            UserId: this.state.UserId,
-            FirstName: this.state.FirstName,
-            LastName: this.state.LastName,
-            Gender: this.state.Gender,
-            Email: this.state.Email,
-            Address: this.state.Address,
-            Designation: this.state.Designation,
-            Salary: this.state.Salary,
-            MobileNumber: this.state.MobileNumber,
-            Password: this.state.Password
-        };
-
-        console.log("user creditails ", user);
-
-
-        axios.post(`https://localhost:44375/api/user/register`, user)
-            .then(res => {
-                console.log(" suceesfull", res);
-                console.log(res.data);
-            }).catch((err) => {
-                console.log(" error ", err);
-
+            .then(json => {
+                if (json.data.Status === 'Success') {
+                    console.log(json.data.Status);
+                    alert("Data Save Successfully");
+                    //this.props.history.push('/Studentlist')
+                }
+                else {
+                    alert('Data Saved successfully');
+                    
+                    //this.props.history.push('/Studentlist')
+                }
             })
     }
-
-    register() {
-        console.warn(this.state)
+    handleChange = (e) => {
+        this.setState({ [e.target.name]: e.target.value });
     }
-
+    
     render() {
         return (
             <div className="container register">
@@ -80,7 +63,7 @@ class Registration extends Component {
                 <input type="email" placeholder="Enter Email" name="Email" required value={this.state.Email} onChange={this.handleChange} /><br /><br />
 
                 <label><strong>Address : </strong></label><br />
-                <input type="text" placeholder="Enter Email" name="Address" required value={this.state.Address} onChange={this.handleChange} /><br /><br />
+                <input type="text" placeholder="Enter Address" name="Address" required value={this.state.Address} onChange={this.handleChange} /><br /><br />
 
                 <label><strong>Designation : </strong></label><br />
                 <input type="text" placeholder="Enter Designation" name="Designation" value={this.state.Designation} onChange={this.handleChange} required /><br /><br />
@@ -94,10 +77,9 @@ class Registration extends Component {
                 <label><strong>Password : </strong></label><br />
                 <input type="password" placeholder="Enter Password" name="Password" value={this.state.Password} onChange={this.handleChange} required /><br /><br />
 
-                <button type="submit" onClick={() => { this.register() }}>Register</button> &nbsp; <button type="reset" className="cancellbutton"> Reset</button>
+                <button type="submit" onClick={this.AddEmployeeData} className="btn btn-success">Register</button> &nbsp; <button type="reset" className="cancellbutton"> Reset</button>
             </div>
         );
     }
 }
-
-export default Registration;
+export default AddEmployee;
