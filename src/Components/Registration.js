@@ -6,14 +6,14 @@ class AddEmployee extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            UserId: 0,
+            UserId: '',
             FirstName: '',
             LastName: '',
             Gender: '',
             Email: '',
             Address: '',
             Designation: '', 
-            Salary: 0.00,
+            Salary: '',
             MobileNumber: '',
             Password: ''
         }

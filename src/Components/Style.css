@@ -1,5 +1,14 @@
-
-  button {   
+.mytable {
+   color: #000;
+   font-weight: bold;
+   font-size: 16px
+}
+.tcenter tr th {
+  text-align: center;
+}
+ 
+ 
+ button {   
          background-color: rgb(156, 126, 61);   
          width: 50%;  
           color: rgb(59, 40, 5);   
@@ -80,9 +89,4 @@
      align-items: center;
    }
 
-   .PageHeading    
-{    
-  margin-top: 10px;    
-  margin-bottom: 10px;    
-  color :black !important;    
-}
+   

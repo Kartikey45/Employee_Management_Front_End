@@ -3,6 +3,7 @@ import './App.css';
 import Login from './Components/Login';
 import Registration from './Components/Registration';
 import ViewAllRecords from './Components/ViewAllRecords';
+import UserActions from './Components/UserActions';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 class App extends Component {
@@ -12,7 +13,8 @@ class App extends Component {
         <Router>
           <Route exact path="/Login" component={Login} />
           <Route path="/Registration" component={Registration} />
-          <Route path="/ViewAllRecords" component={ViewAllRecords} />
+          
+          <Route path="/UserActions" component={UserActions} />
         </Router>
       </div>
     );
