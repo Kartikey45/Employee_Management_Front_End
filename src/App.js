@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './App.css';
 import Login from './Components/Login';
 import Registration from './Components/Registration';
-import ViewAllRecords from './Components/ViewAllRecords';
 import UserActions from './Components/UserActions';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 

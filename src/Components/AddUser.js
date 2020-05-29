@@ -1,7 +1,6 @@
 import React from 'react';
 import { Row, Form, Col, Button } from 'react-bootstrap';
 
-
 class AddUser extends React.Component {
     constructor(props) {
         super(props);

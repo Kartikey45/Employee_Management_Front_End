@@ -22,6 +22,7 @@
    form {   
           border: 3px solid #f1f1f1;   
       }   
+
    input[type=text], input[type=password], input[type=email],  input[type=number], textarea {   
           width: 50%;   
           margin: 8px 0;  
