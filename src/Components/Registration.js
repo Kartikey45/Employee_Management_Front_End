@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import './Style.css';
 
+const apiUrl = 'https://localhost:44375/api/user/register';
+
 class AddEmployee extends React.Component {
     constructor(props) {
         super(props)
@@ -19,7 +21,7 @@ class AddEmployee extends React.Component {
         }
     }
     AddEmployeeData = () => {
-        axios.post('https://localhost:44375/api/user/register', {
+        axios.post(apiUrl, {
             UserId: this.state.UserId, FirstName: this.state.FirstName,
             LastName: this.state.LastName, Gender: this.state.Gender,
             Email: this.state.Email, Address: this.state.Address,
